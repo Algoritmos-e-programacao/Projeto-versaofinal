@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 public class Aplicacao {
 
-    // private static: um único Scanner, usado só dentro desta classe (Apêndice A)
     private static final Scanner entrada = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -39,9 +38,9 @@ public class Aplicacao {
     }
 
     private static void mostrarMenu() {
-        System.out.println("\n==========================================");
+        System.out.println("\n****************************************");
         System.out.println("   PADARIA PÃO QUENTE - MENU PRINCIPAL");
-        System.out.println("==========================================");
+        System.out.println("******************************************");
         System.out.println("1  - Cadastrar produto");
         System.out.println("2  - Listar estoque");
         System.out.println("3  - Registrar venda");
@@ -98,7 +97,7 @@ public class Aplicacao {
     }
 
     private static void carregarDadosIniciais(Padaria padaria) {
-        // Quadro 11 - Produtos iniciais
+        // Produtos existentes no estoque por nome, categoria, preço e quantidade
         padaria.cadastrarProduto("Pão francês", "Pães", 0.75, 200);
         padaria.cadastrarProduto("Pão de queijo", "Salgados", 4.50, 60);
         padaria.cadastrarProduto("Bolo de cenoura", "Doces", 28.00, 6);
@@ -106,16 +105,16 @@ public class Aplicacao {
         padaria.cadastrarProduto("Café coado", "Bebidas", 5.00, 80);
 
         // Quadro 12 - Vendas iniciais
-        // 1. Seg
+        // Seg
         padaria.registrarVenda(1, 120, 1);
         padaria.registrarVenda(2, 15, 1);
         padaria.registrarVenda(5, 30, 1);
 
-        // 2. Ter
+        // Ter
         padaria.registrarVenda(1, 60, 2);
         padaria.registrarVenda(3, 2, 2);
 
-        // 3. Qua
+        // Qua
         padaria.registrarVenda(4, 10, 3);
         padaria.registrarVenda(2, 20, 3);
         padaria.registrarVenda(5, 25, 3);
@@ -134,7 +133,7 @@ public class Aplicacao {
         }
     }
 
-    /** Lê um número decimal. Aceita vírgula ou ponto (5,50 ou 5.50). */
+    // lê um número decimal. Aceita vírgula ou ponto
     private static double lerDecimal(String mensagem) {
         while (true) {
             System.out.print(mensagem);
@@ -151,12 +150,12 @@ public class Aplicacao {
         }
     }
 
-    // Lê uma linha de texto que não pode ficar vazia
+    // lê uma linha de texto que não pode ficar vazia
     private static String lerTexto(String mensagem) {
         while (true) {
             System.out.print(mensagem);
             String texto = entrada.nextLine().trim();
-            if (!texto.isEmpty()) {
+            if (!texto.isEmpty()) { // aviso de texto vazio - empty
                 return texto;
             }
             System.out.println("Este campo não pode ficar vazio.");
