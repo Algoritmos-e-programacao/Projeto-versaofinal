@@ -2,7 +2,6 @@ package padaria;
 
 public class Produto {
 
-    // Contador static compartilhado para gerar códigos automáticos (1, 2, 3...)
     private static int proximoCodigo = 1;
 
     private final int codigo;
@@ -16,11 +15,10 @@ public class Produto {
         this.nome = (nome == null) ? "" : nome.trim();
         this.categoria = (categoria == null || categoria.trim().isEmpty())
                 ? "Sem categoria" : categoria.trim();
-        // Preço inválido fica 0; quantidade negativa vira 0 (Quadro 5)
         this.preco = (preco > 0) ? preco : 0;
         this.quantidade = (quantidade >= 0) ? quantidade : 0;
     }
-
+    // pega o novo código e guarda
     public int getCodigo() {
         return codigo;
     }
@@ -41,7 +39,7 @@ public class Produto {
         return quantidade;
     }
 
-    // Mantido para compatibilidade caso outra classe chame getQuantidadeEstoque()
+    // caso outra classe chame getQuantidadeEstoque()
     public int getQuantidadeEstoque() {
         return quantidade;
     }
@@ -70,7 +68,7 @@ public class Produto {
         return true;
     }
 
-    // Mantido para compatibilidade com chamadas a retirarEstoque
+    // mantido para compatibilidade com chamadas a retirarEstoque
     public boolean retirarEstoque(int unidades) {
         return removerEstoque(unidades);
     }
